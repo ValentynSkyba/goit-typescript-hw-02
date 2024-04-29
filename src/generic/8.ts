@@ -1,19 +1,23 @@
-/*
-  У вас є перелік UserRole, який використовується для класифікації користувачів у вашому додатку.
-  Ви хочете створити об'єкт RoleDescription, який зіставлятиме кожну роль користувача з її описом.
-*/
+// Завдання 8
+// У вас є тип Form, який містить інформацію про форму, включаючи поле errors. Ви хочете створити новий тип Params, який включає всі поля з Form, крім errors.
 
-export enum UserRole {
-  admin = 'admin',
-  editor = 'editor',
-  guest = 'guest',
-}
 
-// Замініть наступний код на версію за допомогою Record
-const RoleDescription: Record<UserRole, string> = {
-  admin: 'Admin User',
-  editor: 'Editor User',
-  guest: 'Guest User',
+type Errors = {
+  email?: string[];
+  firstName?: string[];
+  lastName?: string[];
+  phone?: string[];
 };
+
+type Form = {
+  email: string | null;
+  firstName: string | null;
+  lastName: string | null;
+  phone: string | null;
+  errors: Errors;
+};
+
+// Реалізуйте Params так, щоб унеможливити поле 'errors' з типу Form
+type Params = Omit<Form, "errors">;
 
 export {};
